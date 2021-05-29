@@ -7,7 +7,7 @@ plugins {
 apply from: '../shared_dependencies.gradle'
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         minSdkVersion 21
@@ -36,12 +36,16 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+    }
 }
 
 dependencies {
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.10"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.30"
 
     //room
     implementation "androidx.room:room-runtime:2.3.0"
