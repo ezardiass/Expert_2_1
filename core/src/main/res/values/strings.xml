@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ArchitectureComponentSub1</string>
+    <string name="title">Title</string>
+    <string name="movies">Movies</string>
+    <string name="tv">TV Shows</string>
+    <string name="splash_title">Movies and Tvs App</string>
+    <string name="splash_footer">Photo by Jeff Pierre on Unsplash</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="title_favorite">Favorite</string>
+    <!-- TODO: Remove or change this placeholder text -->
+</resources>
