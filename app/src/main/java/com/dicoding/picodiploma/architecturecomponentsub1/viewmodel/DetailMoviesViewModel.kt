@@ -1,7 +1,6 @@
 package com.dicoding.picodiploma.architecturecomponentsub1.viewmodel
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
 import com.dicoding.picodiploma.core.domain.model.Movie
 import com.dicoding.picodiploma.core.domain.usecase.MovieUseCase
 

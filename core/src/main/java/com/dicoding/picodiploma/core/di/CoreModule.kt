@@ -10,14 +10,12 @@ import com.dicoding.picodiploma.core.data.source.remote.RemoteDataSource
 import com.dicoding.picodiploma.core.domain.repository.IRepository
 import com.dicoding.picodiploma.core.utils.AppExecutors
 import net.sqlcipher.database.SQLiteDatabase
-import net.sqlcipher.database.SQLiteDatabase.getBytes
 import net.sqlcipher.database.SupportFactory
 import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
-
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
