@@ -1,5 +1,6 @@
 package com.dicoding.picodiploma.core.di
 
+
 import androidx.room.Room
 import com.dicoding.picodiploma.core.data.Repository
 import com.dicoding.picodiploma.core.data.room.FilmDatabase
@@ -8,6 +9,10 @@ import com.dicoding.picodiploma.core.data.source.remote.ApiService
 import com.dicoding.picodiploma.core.data.source.remote.RemoteDataSource
 import com.dicoding.picodiploma.core.domain.repository.IRepository
 import com.dicoding.picodiploma.core.utils.AppExecutors
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SQLiteDatabase.getBytes
+import net.sqlcipher.database.SupportFactory
+import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -21,19 +26,28 @@ object CoreModule {
     val databaseModule = module {
         factory { get<FilmDatabase>().dao() }
         single {
+            val passphrase: ByteArray = SQLiteDatabase.getBytes("dicoding".toCharArray())
+            val factory = SupportFactory(passphrase)
             Room.databaseBuilder(
                 androidContext(),
                 FilmDatabase::class.java, "Film.db"
-            ).fallbackToDestructiveMigration().build()
+            ).fallbackToDestructiveMigration()
+                    .openHelperFactory(factory)
+                    .build()
         }
     }
 
     val networkModule = module {
         single {
+            val hostname = "themoviedb.org"
+            val certificatePinner = CertificatePinner.Builder()
+                    .add(hostname, "sha256/+vqZVAzTqUP8BGkfl88yU7SQ3C8J2uNEa55B7RZjEg0==")
+                    .build()
             OkHttpClient.Builder()
                 .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                 .connectTimeout(120, TimeUnit.SECONDS)
                 .readTimeout(120, TimeUnit.SECONDS)
+                .certificatePinner(certificatePinner)
                 .build()
         }
         single {

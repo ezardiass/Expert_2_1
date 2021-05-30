@@ -1,1 +1,9 @@
-<resources />
+<resources >
+    <string name="splash_image">Splash Image</string>
+    <string name="poster_image">Poster Image</string>
+    <string name="textview">TextView</string>
+    <string name="title">Title</string>
+    <string name="duration">Duration</string>
+    <string name="synopsis">Synopsis</string>
+    <string name="rating">Rating</string>
+</resources>

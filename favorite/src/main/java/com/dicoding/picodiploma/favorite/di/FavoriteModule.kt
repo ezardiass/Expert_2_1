@@ -1,4 +1,4 @@
-package com.dicoding.picodiploma.architecturecomponentsub1.di
+package com.dicoding.picodiploma.favorite.di
 
 
 import com.dicoding.picodiploma.favorite.viewmodel.FavoritedMoviesViewModel
